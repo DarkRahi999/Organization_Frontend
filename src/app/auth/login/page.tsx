@@ -1,4 +1,3 @@
-import React from "react";
 import LogInForm from "./LogInForm";
 
 const page = () => {
@@ -6,7 +5,7 @@ const page = () => {
     <div>
       <LogInForm />
     </div>
-  );
-};
+  )
+}
 
-export default page;
+export default page

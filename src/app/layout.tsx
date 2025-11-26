@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Salsa, Roboto_Condensed } from "next/font/google";
 import { ThemeProvider } from "@/provider/themeProvider";
+import { ReduxProvider } from "@/provider/ReduxProvider";
+import { Toaster } from "sonner";
 import "../style/globals.css";
 
 const salsa = Salsa({
@@ -29,14 +31,26 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${salsa.variable} ${roboto.variable} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <ReduxProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster
+              toastOptions={{
+                style: {
+                  height: "60px",
+                  fontSize: "12px",
+                  borderRadius: "6px",
+                },
+              }}
+              position="bottom-center"
+            />
+          </ThemeProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
